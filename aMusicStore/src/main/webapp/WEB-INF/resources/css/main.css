@@ -20,15 +20,15 @@
     text-align: center;
 }
 
-/* .table td {
+table td {
     text-align: center;
     background: whitesmoke;
 
-    display: block;
+   /* . display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-} */
+    white-space: nowrap;  */
+}
 
 .login-box {
     text-align: center;

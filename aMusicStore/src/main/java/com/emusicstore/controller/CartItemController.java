@@ -19,6 +19,7 @@ public class CartItemController {
 	
 	@RequestMapping(value="/{cardId}", method= RequestMethod.GET)
 	public String getCart(@PathVariable(value ="cartId") String cartId, Model model){
+		System.out.println("cart method is caled");
 		model.addAttribute("cartId", cartId);
 		return "cart";
 	}

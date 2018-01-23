@@ -57,7 +57,7 @@ public class CartController {
 			cart=cartDao.create(new Cart(sessionId));
 		
 		}
-		Product product = productDao.getProductById(Integer.parseInt(productId));
+		Product product = productDao.getProductById(productId);
 		if(product == null){
 		throw new IllegalArgumentException(new Exception());	
 		}
@@ -78,7 +78,7 @@ public class CartController {
 			cart=cartDao.create(new Cart(sessionId));
 		
 		}
-		Product product = productDao.getProductById(Integer.parseInt(productId));
+		Product product = productDao.getProductById(productId);
 		if(product == null){
 		throw new IllegalArgumentException(new Exception());	
 		}

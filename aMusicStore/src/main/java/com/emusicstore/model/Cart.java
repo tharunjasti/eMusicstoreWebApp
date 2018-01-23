@@ -37,7 +37,7 @@ public class Cart {
 	}
 	
 	public void addCartItem(CartItem item){
-		String productId=Integer.toString(item.getProduct().getProductId());
+		String productId=item.getProduct().getProductId();
 	
 		if(cartItems.containsKey(productId)){
 			CartItem existingCartItem=cartItems.get(productId);
@@ -50,7 +50,7 @@ public class Cart {
 	}
 	
 	public void removeCartItem(CartItem item){
-		String productId=Integer.toString(item.getProduct().getProductId());
+		String productId=item.getProduct().getProductId();
 		cartItems.remove(productId);
 	}
 
