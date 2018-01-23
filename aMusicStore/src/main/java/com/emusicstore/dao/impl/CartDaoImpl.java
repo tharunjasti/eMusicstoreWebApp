@@ -1,18 +1,19 @@
 package com.emusicstore.dao.impl;
 
+import com.emusicstore.dao.CartDao;
+import com.emusicstore.model.Cart;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
-import org.springframework.stereotype.Repository;
-
-import com.emusicstore.dao.CartDao;
-import com.emusicstore.model.Cart;
-
+/**
+ * Created by Le on 1/11/2016.
+ */
 @Repository
-public class CartDaoImpl implements CartDao{
+public class CartDaoImpl implements CartDao {
 
-	private Map<String, Cart> listOfCarts;
+    private Map<String, Cart> listOfCarts;
 
     public CartDaoImpl() {
         listOfCarts = new HashMap<String, Cart>();

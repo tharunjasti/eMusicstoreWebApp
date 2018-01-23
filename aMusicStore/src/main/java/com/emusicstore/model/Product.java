@@ -35,7 +35,8 @@ public class Product implements Serializable{
     private String productManufacturer;
     
     @Transient
-    private MultipartFile productImage;    
+    private MultipartFile productImage; 
+    
 
     public String getProductName() {
         return productName;

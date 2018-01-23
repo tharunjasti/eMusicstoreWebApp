@@ -11,10 +11,18 @@ public class CartItem {
 		this.quantity = 1;
 		this.totalPrice = product.getProductPrice();
 	}
+	
 
 	public Product getProduct() {
 		return product;
 	}
+
+	/*public CartItem(Product product, int quantity, double totalPrice) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
+		this.totalPrice = totalPrice;
+	}*/
 
 	public void setProduct(Product product) {
 		this.product = product;

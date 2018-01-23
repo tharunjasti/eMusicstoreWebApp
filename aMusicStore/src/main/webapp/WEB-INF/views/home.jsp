@@ -19,9 +19,9 @@
 
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Welcome Online Shopping Store</h1>
+                    <h1>Welcome to Le's Music Store</h1>
 
-                    <p>Here you can browse and buy Items, Records and music related Accessories. Order Now for
+                    <p>Here you can browse and buy Instruments, Records and music related Accessories. Order Now for
                         Your Amazing New Kit!</p>
 
                 </div>
@@ -96,5 +96,5 @@
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
-<%@include file="/WEB-INF/views/template/footer.jsp" %>
+    <%@include file="/WEB-INF/views/template/footer.jsp" %>
 

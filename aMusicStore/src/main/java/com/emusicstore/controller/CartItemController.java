@@ -11,17 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/cart")
 public class CartItemController {
-	
-	@RequestMapping
-	public String get(HttpServletRequest request){
-		return "redirect:/cart/"+request.getSession(true).getId();
-	}
-	
-	@RequestMapping(value="/{cardId}", method= RequestMethod.GET)
-	public String getCart(@PathVariable(value ="cartId") String cartId, Model model){
-		System.out.println("cart method is caled");
-		model.addAttribute("cartId", cartId);
-		return "cart";
-	}
 
+    @RequestMapping
+    public String get (HttpServletRequest request) {
+        return "redirect:/cart/"+request.getSession(true).getId();
+    }
+
+    @RequestMapping(value="/{cartId}", method = RequestMethod.GET)
+    public String getCart(@PathVariable (value = "cartId") String cartId, Model model) {
+        model.addAttribute("cartId", cartId);
+
+        return "cart";
+    }
 }
