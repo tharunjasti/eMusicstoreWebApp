@@ -1,42 +1,56 @@
 package com.emusicstore.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-import javax.validation.constraints.Min;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
+import java.util.List;
+
+
 @Entity
 public class Product implements Serializable{
-	private static final long serialVersionUID = -3532377236419382983L;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String productId;
 
-	@NotEmpty (message = "The product name must not be null.")
+    private static final long serialVersionUID = -3532377236419382983L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int productId;
+
+    @NotEmpty (message = "The product name must not be null.")
+
     private String productName;
     private String productCategory;
     private String productDescription;
-    
+
     @Min(value = 0, message = "The product price must no be less then zero.")
     private double productPrice;
     private String productCondition;
     private String productStatus;
-    
+
     @Min(value = 0, message = "The product unit must not be less than zero.")
     private int unitInStock;
     private String productManufacturer;
-    
+
     @Transient
-    private MultipartFile productImage; 
-    
+    private MultipartFile productImage;
+
+    //@Transient  //later remove this
+   @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   @JsonIgnore
+    private List<CartItem> cartItemList;
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
     public String getProductName() {
         return productName;
@@ -46,15 +60,7 @@ public class Product implements Serializable{
         this.productName = productName;
     }
 
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
-	public String getProductCategory() {
+    public String getProductCategory() {
         return productCategory;
     }
 
@@ -109,23 +115,21 @@ public class Product implements Serializable{
     public void setProductManufacturer(String productManufacturer) {
         this.productManufacturer = productManufacturer;
     }
-    
 
-	public MultipartFile getProductImage() {
-		return productImage;
-	}
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
 
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
+    }
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productCategory="
-				+ productCategory + ", productDescription=" + productDescription + ", productPrice=" + productPrice
-				+ ", productCondition=" + productCondition + ", productStatus=" + productStatus + ", unitInStock="
-				+ unitInStock + ", productManufacturer=" + productManufacturer + "]";
-	}
-    
-    
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
 }

@@ -1,50 +1,68 @@
 package com.emusicstore.model;
 
-public class CartItem {
-	
-	private Product product;
-	private int quantity;
-	private double totalPrice;
-	
-	public CartItem(Product product) {
-		this.product = product;
-		this.quantity = 1;
-		this.totalPrice = product.getProductPrice();
-	}
-	
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-	public Product getProduct() {
-		return product;
-	}
+import javax.persistence.*;
+import java.io.Serializable;
 
-	/*public CartItem(Product product, int quantity, double totalPrice) {
-		super();
-		this.product = product;
-		this.quantity = quantity;
-		this.totalPrice = totalPrice;
-	}*/
+@Entity
+public class CartItem implements Serializable{
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    private static final long serialVersionUID = -904360230041854157L;
 
-	public int getQuantity() {
-		return quantity;
-	}
+    @Id
+    @GeneratedValue
+    private int cartItemId;
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    @ManyToOne
+    @JoinColumn(name = "cartId")
+    @JsonIgnore
+    private Cart cart;
 
-	public double getTotalPrice() {
-		return totalPrice;
-	}
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	
-	
-	
+    private int quantity;
+    private double totalPrice;
 
+    public int getCartItemId() {
+        return cartItemId;
+    }
+
+    public void setCartItemId(int cartItemId) {
+        this.cartItemId = cartItemId;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }
